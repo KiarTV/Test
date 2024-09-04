@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-   <title> Automat </title>
+    <title>Automat</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
@@ -24,33 +24,40 @@
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             max-width: 400px;
             width: 100%;
+            text-align: center;
         }
 
         h1 {
             color: #007BFF;
-            text-align: center;
+            margin-bottom: 20px;
         }
 
         h2 {
             font-size: 1rem;
             color: #555;
-            text-align: center;
             margin-bottom: 20px;
+            line-height: 1.5;
         }
 
         label {
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
+            text-align: left;
         }
 
         input[type="text"] {
-            width: calc(100% - 22px);
+            width: calc(100% - 20px);
             padding: 10px;
             margin-bottom: 20px;
             border: 1px solid #ccc;
             border-radius: 5px;
             font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        input[type="text"]::placeholder {
+            color: #aaa;
         }
 
         button {
@@ -68,13 +75,16 @@
         button:hover {
             background-color: #1d8f38;
         }
+
+        button:active {
+            background-color: #176b2d;
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
         <h1>Automat</h1>
-        
         <h2>1 = Cola 1.30€, 2 = Fanta 1.50€, 3 = Sprite 1.40€, 4 = Apfelschorle 2.00€, 5 = Vio Wasser 1.10€</h2>
         
         <label for="eingabe1">Eingeworfenes Geld:</label>
@@ -103,7 +113,7 @@
 
             if (geld >= preis) {
                 geldAusgabe = geld - preis;
-                alert(`Der Automart gibt dir eine ${ausgabe[auswahl - 1]} und ${geldAusgabe.toFixed(2)}€ als Wechselgeld.`);
+                alert(`Der Automat gibt dir eine ${ausgabe[auswahl - 1]} und ${geldAusgabe.toFixed(2)}€ als Wechselgeld.`);
             } else {
                 alert(`Nicht genügend Geld! Du brauchst ${preis.toFixed(2)}€ für eine ${ausgabe[auswahl - 1]}.`);
             }
