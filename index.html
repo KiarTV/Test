@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript mit Eingabefeldern</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #007BFF;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 1rem;
+            color: #555;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ca5e5e;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Automat</h1>
+        
+        <h2>1 = Cola 1.30€, 2 = Fanta 1.50€, 3 = Sprite 1.40€, 4 = Apfelschorle 2.00€, 5 = Vio Wasser 1.10€</h2>
+        
+        <label for="eingabe1">Eingeworfenes Geld:</label>
+        <input type="text" id="eingabe1" placeholder="Betrag eingeben...">
+
+        <label for="eingabe2">Ausgewählte Nummer:</label>
+        <input type="text" id="eingabe2" placeholder="Nummer eingeben...">
+
+        <button onclick="gibGetraenkAus()">Gib das Getränk aus</button>
+    </div>
+
+    <script>
+        function gibGetraenkAus() {
+            let geld = parseFloat(document.getElementById("eingabe1").value);
+            let auswahl = parseInt(document.getElementById("eingabe2").value);
+            let ausgabe = ["Cola", "Fanta", "Sprite", "Apfelschorle", "Vio Wasser"];
+            let preise = [1.30, 1.50, 1.40, 2.00, 1.10];
+            let geldAusgabe = 0;
+
+            if (auswahl < 1 || auswahl > 5) {
+                alert("Ungültige Auswahl! Bitte wähle eine Nummer zwischen 1 und 5.");
+                return;
+            }
+
+            let preis = preise[auswahl - 1];
+
+            if (geld >= preis) {
+                geldAusgabe = geld - preis;
+                alert(`Der Automart gibt dir eine ${ausgabe[auswahl - 1]} und ${geldAusgabe.toFixed(2)}€ als Wechselgeld.`);
+            } else {
+                alert(`Nicht genügend Geld! Du brauchst ${preis.toFixed(2)}€ für eine ${ausgabe[auswahl - 1]}.`);
+            }
+        }
+    </script>
+
+</body>
+</html>
